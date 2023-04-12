@@ -23,5 +23,9 @@ export default defineNuxtModule<ModuleOptions>({
 
     // @note: import hooks
     addImportsDir(resolver.resolve("./runtime/composables"));
+    // @note: import stores
+    addImportsDir(resolver.resolve("./runtime/stores"));
+    // @note: import constants
+    addImportsDir(resolver.resolve("./runtime/constants"));
   },
 });
