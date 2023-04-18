@@ -10,8 +10,8 @@ export interface ModuleOptions {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: "my-module",
-    configKey: "myModule",
+    name: "@kikikk/web3-modules",
+    configKey: "@kikikk/web3-modules",
   },
   // Default configuration options of the Nuxt module
   defaults: {},
@@ -27,5 +27,14 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve("./runtime/stores"));
     // @note: import constants
     addImportsDir(resolver.resolve("./runtime/constants"));
+  },
+  hooks: {
+    // @note: import components
+    "components:dirs"(dirs) {
+      const resolver = createResolver(import.meta.url);
+      dirs.push({
+        path: resolver.resolve(__dirname, "./runtime/components"),
+      });
+    },
   },
 });

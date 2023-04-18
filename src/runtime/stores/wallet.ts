@@ -5,7 +5,6 @@ import { Chain } from "../constants/chain";
 interface WalletStoreState {
   walletType: Wallet | "";
   connected: boolean;
-  account: string;
   chain: Chain | -1;
 }
 
@@ -14,15 +13,11 @@ export const useWalletStore = defineStore("wallet", {
     ({
       walletType: "",
       connected: false,
-      account: "",
       chain: -1,
     } as WalletStoreState),
   actions: {
     setWallet(walletType: WalletStoreState["walletType"]) {
       this.walletType = walletType;
-    },
-    setAccount(account: string) {
-      this.account = account;
     },
     setConnected(connected: boolean) {
       this.connected = connected;
